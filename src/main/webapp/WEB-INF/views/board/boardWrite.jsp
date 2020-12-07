@@ -34,7 +34,7 @@ $(function() {
 		<p>This example adds a dropdown menu for the "Page 1" button in
 			the navigation bar.</p>
 
-		<form action=./noticeWrite " method="post" enctype="multipart/form-data">
+		<form action="./${board}Write" method="post" enctype="multipart/form-data">
 			<div class="form-group">
 				<label for="title">Title : </label> <input type="title"
 					class="form-control" id="title" placeholder="Enter Title"

@@ -18,7 +18,7 @@
 			<!-- <img alt="" src="../images/image.jpg">
 
 			<!-- search -->
-			<form action="./noticeList" id="frm">
+			<form action="./${board}List" id="frm">
 				<input type="hidden" name="curPage" id="curPage" value=1>
 
 				<div class="form-group">
@@ -52,7 +52,7 @@
 			<c:forEach items="${list}" var="vo">
 				<tr>
 					<td>${vo.num}</td>
-					<td><a href="noticeSelect?num=${vo.num}">${vo.title}</a></td>
+					<td><a href="${board}Select?num=${vo.num}">${vo.title}</a></td>
 					<td>${vo.writer}</td>
 					<td>${vo.regDate}</td>
 					<td>${vo.hit}</td>
@@ -99,7 +99,7 @@
 
 				
 			$("#btn").click(function() {
-				location.href = "./noticeWrite";
+				location.href = "./${board}Write";
 			});
 
 			

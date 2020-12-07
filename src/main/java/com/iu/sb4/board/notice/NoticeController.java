@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.multipart.MultipartFile;
@@ -26,7 +27,16 @@ public class NoticeController {
 	@Value("${board.notice.filePath}")
 	private String filePath;
 	
-	 @GetMapping("noticeFileDown") public ModelAndView getNoticeFileDown(FileVO fileVO) throws Exception {
+	//model.addAtrribute("board", "notice);
+	// controller내의 모든 메서드에 적용
+	@ModelAttribute(name="board")
+	public String getBoard() {
+		return "notice";
+	}
+	
+	
+	 @GetMapping("noticeFileDown")
+	 public ModelAndView getNoticeFileDown(FileVO fileVO) throws Exception {
 		 ModelAndView mv = new ModelAndView();
 		 fileVO = noticeService.getFile(fileVO);
 
@@ -38,9 +48,10 @@ public class NoticeController {
 	}
 	 
 
-	@GetMapping
+	@GetMapping("noticeSelect")
 	public ModelAndView getOne(BoardVO boardVO) throws Exception {
 		ModelAndView mv = new ModelAndView();
+		
 		boardVO = noticeService.getOne(boardVO);
 
 		mv.addObject("vo", boardVO);
@@ -48,18 +59,20 @@ public class NoticeController {
 
 		return mv;
 	}
+	
 
 	@GetMapping("noticeList") // noticeList라는 주소가 들어오면
 	public String getList(Pager pager, Model model) throws Exception {
 
 		List<BoardVO> ar = noticeService.getList(pager);
+
 		model.addAttribute("list", ar);
 		model.addAttribute("pager", pager);
 		return "board/boardList";
 	}
 
 	@GetMapping("noticeWrite")
-	public String setInsert() throws Exception {
+	public String setInsert(Model model) throws Exception {
 		return "board/boardWrite";
 	}
 

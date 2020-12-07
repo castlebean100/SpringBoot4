@@ -12,6 +12,10 @@
 		<typeAlias type="com.iu.sb4.util.Pager" alias="Pager"/>
 
 		<typeAlias type="com.iu.sb4.board.file.FileVO" alias="FileVO"/>
-		
+		<typeAlias type="com.iu.sb4.member.MemberVO" alias="MemberVO"/>
+		<typeAlias type="com.iu.sb4.member.MemberFileVO" alias="MemberFileVO"/>		
+
+
 	</typeAliases>
+	
 </configuration>  

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- mapper의 풀 패키지명과 동일하게 namespace를 설정해준다. -->
+<mapper namespace="com.iu.sb4.member.MemberMapper">
+	<!-- 회원가입 JOIN -->
+	<insert id="setInsert" parameterType="MemberVO">
+		insert into member (id, pw, name, age, email) values(#{id}, #{pw}, #{name}, #{age}, #{email})
+	</insert>
+
+	<!-- 멤버 파일 첨부 -->
+	<insert id="setInsertFile" parameterType="MemberFileVO">
+		insert into memberFile (id, fileName, oriName) values (#{id}, #{fileName}, #{oriName})
+	</insert>
+	
+	<select id="getMemberLogin" resultType="MemberVO" parameterType="MemberVO">
+		select * from member where id=#{id} and pw=#{pw}	
+	</select>
+	
+</mapper>
